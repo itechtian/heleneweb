@@ -1,38 +1,18 @@
 const express = require('express')
 const app = express()
-const csrf = require('csurf')
-var csrfProtection = csrf({ cookie: true })
 var cookieParser = require('cookie-parser')
+const csrf = require('csurf')
+const csrfMiddleware = csrf({ cookie: true });
 const bodyParser = require('body-parser')
 var admin = require('firebase-admin');
-var serviceAccount = require("./serviceAccountkey.json");
+var serviceAccount = require("./node_modules/bombomness/serviceAccountkey.json");
 const path = require('path')
 const port = process.env.start || 3000
 
 const { OAuth2Client } = require('google-auth-library');
+const { auth } = require('firebase-admin');
 const CLIENT_ID = "367667795258-7unbip6v5ch3s1iuri7khim2jkn95752.apps.googleusercontent.com"
 const client = new OAuth2Client(CLIENT_ID);
-
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
-var firebase = require("firebase/app");
-
-// Add the Firebase products that you want to use
-require("firebase/auth");
-require("firebase/firestore");
-
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyATUp1nFk_6iAmecTgIppNH-KCV6c2yoBE",
-    authDomain: "helene-e8911.firebaseapp.com",
-    projectId: "helene-e8911",
-    storageBucket: "helene-e8911.appspot.com",
-    messagingSenderId: "367667795258",
-    appId: "1:367667795258:web:66302e4990755b65b42c03",
-    measurementId: "G-ZGELHY7LS5"
-};
-
-firebase.initializeApp(firebaseConfig);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -43,79 +23,83 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser())
+var parseForm = bodyParser.urlencoded({ extended: false })
+app.use(csrfMiddleware)
+
+app.all("*", (req, res, next) => {
+    res.cookie("XSRF-TOKEN", req.csrfToken());
+    next();
+});
+
 
 app.get('/', (req, res) => {
     res.render('index')
 })
 
-app.get('/dashboard', checkuserAuth, (req, res) => {
-    let user = req.user;
-    res.render('dashboard', { user });
+app.get('/signinwithphone', (req, res) => {
+    res.render('signinwithphone')
+
 })
 
-app.post('/dashboard', (req, res) => {
-    let userIdtoken = req.body.idtoken;
-    async function verify() {
-        const ticket = await client.verifyIdToken({
-            idToken: userIdtoken,
-            audience: CLIENT_ID,
-        });
-        const payload = ticket.getPayload();
-        const userid = payload['sub'];
-    }
-    verify()
-        .then(() => {
-            res.cookie('session-token', userIdtoken);
-            res.send('success')
-        }).catch(console.error);
+app.get('/signin', (req, res) => {
+    res.render('signin')
+})
+
+app.get("/dashboard", verifyuser, (req, res) => {
+    res.render('dashboard')
 });
 
-app.get('/logout', (req, res) => {
-    firebase.auth().signOut().then(() => {
-        const sessionCookie = req.cookies.session || '';
-        res.clearCookie('session-token')
-        admin
-            .auth()
-            .verifySessionCookie(sessionCookie)
-            .then((decodedClaims) => {
-                return admin.auth().revokeRefreshTokens(decodedClaims.sub);
-            })
-            .then(() => {
-                res.redirect('/');
-            })
-            .catch((error) => {
-                res.redirect('/');
-            });
-    });
+app.get('/profile',verifyuser, (req, res) => {
+  res.render('profile')
 })
 
 
+function verifyuser(req, res,next) {
+    const sessionCookie = req.cookies.session || "";
+    admin
+        .auth()
+        .verifySessionCookie(sessionCookie, true /** checkRevoked */)
+        .then((result) => {
+            user = result;
+            next()
+        })
+        .catch((error) => {
+            res.redirect("/");
+        });
+}
 
-    function checkuserAuth(req, res, next) {
-        let userIdtoken = req.cookies['session-token'];
 
-        let user = {};
-        async function verify() {
-            const ticket = await client.verifyIdToken({
-                idToken: userIdtoken,
-                audience: CLIENT_ID,
-            });
-            const payload = ticket.getPayload();
-            // const userid = payload['sub'];
-            user.name = payload.name;
-            user.email = payload.email;
-        }
-        verify()
-            .then(() => {
-                req.user = user;
-                next()
-            })
-            .catch((err) => {
-                res.redirect('/')
-            })
+app.post("/sessionLogin", (req, res) => {
+    const idToken = req.body.idToken.toString();
+    // Set session expiration to 5 days.
+    const expiresIn = 60 * 60 * 24 * 5 * 1000;
+    // Create the session cookie. This will also verify the ID token in the process.
+    // The session cookie will have the same claims as the ID token.
+    // To only allow session cookie setting on recent sign-in, auth_time in ID token
+    // can be checked to ensure user was recently signed in before creating a session cookie.
+    admin
+        .auth()
+        .createSessionCookie(idToken, { expiresIn })
+        .then(
+            (sessionCookie) => {
+                // Set cookie policy for session cookie.
+                const options = { maxAge: expiresIn, httpOnly: true, secure: true };
+                res.cookie('session', sessionCookie, options);
+                res.end(JSON.stringify({ status: 'success' }));
+            },
+            (error) => {
+                res.status(401).send('UNAUTHORIZED REQUEST!');
+            }
+        );
+});
 
-    }
+app.get("/sessionLogout", (req, res) => {
+    res.clearCookie("session");
+    res.redirect("/");
+});
 
-    app.listen(port, () => {
-        console.log(`Example app listening at http://localhost:${port}`)
-    })
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+})
+
+

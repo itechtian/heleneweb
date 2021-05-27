@@ -17,28 +17,21 @@
 
 <body>
     <main id="flex-center-70">
-        <div class="p-3 py-3 px-3" id="phoneform">
-            <form id="signin" class="form-group p-3 py-3 px-3">
+        <div class="p-3 py-3 px-3">
+            <form id="signup" class="form-group py-3 px-3">
                 <h5 class="small">Enter your Email</h5>
                 <input type="text" name="login" class="form-control" />
                 <br>
-                <h5 class="small">Enter your Password</h5>
+                <h5 class="small">Enter a Password</h5>
                 <input type="password" name="password" class="form-control" />
-                <button type="submit" class="btn btn-primary mt-3">Login</button>
+                <button type="submit" class="btn btn-primary mt-3">Sign up</button>
             </form>
             <hr>
             <p class="text-center">OR</p>
-            <section class="mt-1 d-flex">
-                <button id="signinwithgoogle" class="btn btn-outline-primary m-2"><img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
-                        width="30px"> Sign in</button>
-                <button id="signinwithphone" class="btn btn-outline-primary m-2"><img
-                        src="https://icon-library.com/images/call-icon-png/call-icon-png-6.jpg" width="30px"> Sign
-                    in</button>
-                <button id="creataccount" class="btn btn-outline-primary m-2">New? Create Account</button>
-            </section>
-            <section class="mt-1">
-
+            <section class="mt-1 d-flex w-100">
+                <button id="loginpage" class="btn btn-outline-primary m-2">Already registered!</button>
+                <button id="signinwithphone" class="btn btn-outline-primary m-2"><img src="https://icon-library.com/images/call-icon-png/call-icon-png-6.jpg"
+                    width="30px"> Sign in with phone</button>
             </section>
         </div>
     </main>
@@ -73,7 +66,7 @@
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
 
         document
-            .getElementById("signin")
+            .getElementById("signup")
             .addEventListener("submit", (event) => {
                 event.preventDefault();
                 const login = event.target.login.value;
@@ -81,7 +74,7 @@
 
                 firebase
                     .auth()
-                    .signInWithEmailAndPassword(login, password)
+                    .createUserWithEmailAndPassword(login, password)
                     .then(({ user }) => {
                         return user.getIdToken().then((idToken) => {
                             return fetch("/sessionLogin", {
@@ -103,45 +96,13 @@
                     });
                 return false;
             });
-        document.getElementById('signinwithphone')
-            .addEventListener('click', () => {
-                location.assign('/signinwithphone')
-            })
-        document.getElementById('creataccount')
-            .addEventListener('click', () => {
-                location.assign('/signin')
-            })
 
-    </script>
-
-    <!-- Google script -->
-    <script>
-        document.getElementById('signinwithgoogle')
-            .addEventListener('click', () => {
-                var provider = new firebase.auth.GoogleAuthProvider();
-                firebase.auth()
-                    .signInWithPopup(provider)
-                    .then(({ user }) => {
-                        return user.getIdToken().then((idToken) => {
-                            return fetch("/sessionLogin", {
-                                method: "POST",
-                                headers: {
-                                    Accept: "application/json",
-                                    "Content-Type": "application/json",
-                                    "CSRF-Token": Cookies.get("XSRF-TOKEN"),
-                                },
-                                body: JSON.stringify({ idToken }),
-                            });
-                        });
-                    })
-                    .then(() => {
-                        return firebase.auth().signOut();
-                    })
-                    .then(() => {
-                        window.location.assign("/dashboard");
-                    });
-                return false;
-            })
+        document.getElementById("signinwithphone").addEventListener('click', () => {
+            location.assign('signinwithphone')
+        });
+        document.getElementById("loginpage").addEventListener('click', () => {
+            location.assign('/')
+        })
     </script>
 </body>
 

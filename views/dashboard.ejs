@@ -16,21 +16,14 @@
 </head>
 
 <body>
-    <p>Welcome to your dashboard <%= user.name %>
-    </p>
-    <p>you are signedin with <%= user.email %>
-    </p>
-    <a href="/logout" onclick="signOut();">Log out</a>
 
+    <header></header>
 
-    <script>
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
-        }
-    </script>
+    <main>
+        <p>Hi <%= user.name %> Check <a href="/profile"> Profile here</a></p>
+        <a href="/sessionLogout">Log out</a>
+
+    </main>
 
     <script src="js/index.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>

@@ -1,7 +1,26 @@
-#login{
+#flex-center-max{
     display: flex;
     margin:auto 0;
     justify-content: center;
+    width: 100%;
+    height: 80vh;
+    align-items: center;
+}
+
+#flex-center-70{
+    display: flex;
+    margin:auto 0;
+    justify-content: center;
+    width: 100%;
     height: 70vh;
     align-items: center;
 }
+
+
+.access-gateway{
+    display: flex;
+    margin:auto 0;
+    justify-content: center;
+    align-items: center;
+}
+
