@@ -14,7 +14,7 @@ var admin = require("firebase-admin");
 var serviceAccount = require("C:/Users/STC/Downloads/helene-e8911-firebase-adminsdk-eggk3-9a760daca0.json");
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount)
 });
 
 
@@ -37,9 +37,21 @@ app.all("*", (req, res, next) => {
 });
 
 
-app.get('/', (req, res) => {
-    res.render('index')
-})
+app.get('/', keepmelogedin, (req, res) => { })
+
+function keepmelogedin(req, res) {
+    const sessionCookie = req.cookies.session || "";
+    admin
+        .auth()
+        .verifySessionCookie(sessionCookie, true)
+        .then((result) => {
+            user = result;
+            res.redirect('/dashboard')
+        })
+        .catch((error) => {
+            res.render("index");
+        });
+}
 
 app.get('/signinwithphone', (req, res) => {
     res.render('signinwithphone')
@@ -54,12 +66,12 @@ app.get("/dashboard", verifyuser, (req, res) => {
     res.render('dashboard')
 });
 
-app.get('/profile',verifyuser, (req, res) => {
-  res.render('profile')
+app.get('/profile', verifyuser, (req, res) => {
+    res.render('profile')
 })
 
 
-function verifyuser(req, res,next) {
+function verifyuser(req, res, next) {
     const sessionCookie = req.cookies.session || "";
     admin
         .auth()
