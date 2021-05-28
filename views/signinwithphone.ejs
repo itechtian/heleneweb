@@ -15,17 +15,25 @@
 
     <header></header>
 
-    <main id="flex-center-max">
-
-        <div class="shadow p-3 py-3 px-3" id="phoneform">
-            <form class="form-group">
+    <main id="flex-center-70">
+        <div class="card">
+            <div class="container card-header bg-white">
+                <h4><img src="https://helene.ng/wp-content/uploads/2021/03/Helene.png" width="30px"> <i>Helene
+                        Bussiness</i></h4>
+            </div>
+            <form class="form-group p-3 py-2 px-2">
                 <h5 class="small">Enter your Phone Number</h5>
-                <input type="text" class="form-control form-control-sm" id="number" placeholder="Phone Number" required>
+                <input type="text" class="form-control" id="number" placeholder="+234xxxxxxxx" required>
                 <button type="button" class="btn btn-primary btn-sm mt-3" onclick="getcode();">Get Code</button>
             </form>
             <div id="recaptcha-container"></div>
         </div>
-        <div class="shadow p-3 py-3 px-3" id="codeform">
+
+      <div class="card"  id="codeform">
+        <div class="container card-header bg-white">
+            <h4><img src="https://helene.ng/wp-content/uploads/2021/03/Helene.png" width="30px"> <i>Helene
+                    Bussiness</i></h4>
+        </div>
             <form class="form-group">
                 <h5 class="small">Enter Code here</h5>
                 <input type="text" class="form-control" id="code" required>

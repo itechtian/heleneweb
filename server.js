@@ -4,20 +4,25 @@ var cookieParser = require('cookie-parser')
 const csrf = require('csurf')
 const csrfMiddleware = csrf({ cookie: true });
 const bodyParser = require('body-parser')
-var admin = require('firebase-admin');
-var serviceAccount = require("./node_modules/bombomness/serviceAccountkey.json");
 const path = require('path')
 const port = process.env.start || 3000
+
+
+
+var admin = require("firebase-admin");
+
+var serviceAccount = require("C:/Users/STC/Downloads/helene-e8911-firebase-adminsdk-eggk3-9a760daca0.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+
 
 const { OAuth2Client } = require('google-auth-library');
 const { auth } = require('firebase-admin');
 const CLIENT_ID = "367667795258-7unbip6v5ch3s1iuri7khim2jkn95752.apps.googleusercontent.com"
 const client = new OAuth2Client(CLIENT_ID);
-
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
-
 
 app.set("view engine", "ejs");
 app.use(express.json());
@@ -72,11 +77,7 @@ function verifyuser(req, res,next) {
 app.post("/sessionLogin", (req, res) => {
     const idToken = req.body.idToken.toString();
     // Set session expiration to 5 days.
-    const expiresIn = 60 * 60 * 24 * 5 * 1000;
-    // Create the session cookie. This will also verify the ID token in the process.
-    // The session cookie will have the same claims as the ID token.
-    // To only allow session cookie setting on recent sign-in, auth_time in ID token
-    // can be checked to ensure user was recently signed in before creating a session cookie.
+    const expiresIn = 60 * 60 * 24 * 5 * 1000
     admin
         .auth()
         .createSessionCookie(idToken, { expiresIn })

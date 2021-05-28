@@ -22,6 +22,7 @@
         </main>
         <main id="flex-center-70" class="p-3 py-3 px-3">
             <div class="p-3 py-3 px-3" id="phoneform">
+                <div class="container" id="errorDiv"></div>
                 <div class="card">
                     <div class="container card-header bg-white">
                         <h4><img src="https://helene.ng/wp-content/uploads/2021/03/Helene.png" width="30px"> <i>Helene
@@ -99,7 +100,10 @@
                                     "CSRF-Token": Cookies.get("XSRF-TOKEN"),
                                 },
                                 body: JSON.stringify({ idToken }),
-                            });
+                            })
+                            .catch((e)=>{
+                                document.getElementById('errorDiv').innerHTML = "something went wrong";
+                            })
                         });
                     })
                     .then(() => {
@@ -108,7 +112,10 @@
                     .then(() => {
                         window.location.assign("/dashboard");
                     });
-                return false;
+                return false
+                .catch((e)=>{
+                    document.getElementById('errorDiv').innerHTML = "something went wrong";
+                })
             });
         document.getElementById('signinwithphone')
             .addEventListener('click', () => {
@@ -138,7 +145,10 @@
                                     "CSRF-Token": Cookies.get("XSRF-TOKEN"),
                                 },
                                 body: JSON.stringify({ idToken }),
-                            });
+                            })
+                            .catch((e)=>{
+                                document.getElementById('errorDiv').innerHTML = "something went wrong";
+                            })
                         });
                     })
                     .then(() => {
@@ -146,8 +156,10 @@
                     })
                     .then(() => {
                         window.location.assign("/dashboard");
-                    });
-                return false;
+                    })
+                    .catch((e)=>{
+                        document.getElementById('errorDiv').innerHTML = "something went wrong";
+                    })     
             })
     </script>
 </body>
