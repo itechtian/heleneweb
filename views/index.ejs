@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-signin-client_id"
         content="367667795258-7unbip6v5ch3s1iuri7khim2jkn95752.apps.googleusercontent.com">
+    <link rel="icon" sizes="192x192" href="https://helene.ng/wp-content/uploads/2021/03/Helene.png">
+    <meta name="theme-color" content="#1e73be">
     <meta name="google-signin-cookiepolicy" content="single_host_origin">
     <meta name="google-signin-scope" content="profile email">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -18,7 +20,7 @@
 <body>
     <div class="d-flex">
         <main id="flex-center-max" class="bg-primary">
-           
+
         </main>
         <main id="flex-center-70" class="p-3 py-3 px-3">
             <div class="p-3 py-3 px-3" id="phoneform">
@@ -101,9 +103,9 @@
                                 },
                                 body: JSON.stringify({ idToken }),
                             })
-                            .catch((e)=>{
-                                document.getElementById('errorDiv').innerHTML = "something went wrong";
-                            })
+                                .catch((e) => {
+                                    document.getElementById('errorDiv').innerHTML = "something went wrong";
+                                })
                         });
                     })
                     .then(() => {
@@ -113,9 +115,9 @@
                         window.location.assign("/dashboard");
                     });
                 return false
-                .catch((e)=>{
-                    document.getElementById('errorDiv').innerHTML = "something went wrong";
-                })
+                    .catch((e) => {
+                        document.getElementById('errorDiv').innerHTML = "something went wrong";
+                    })
             });
         document.getElementById('signinwithphone')
             .addEventListener('click', () => {
@@ -146,9 +148,9 @@
                                 },
                                 body: JSON.stringify({ idToken }),
                             })
-                            .catch((e)=>{
-                                document.getElementById('errorDiv').innerHTML = "something went wrong";
-                            })
+                                .catch((e) => {
+                                    document.getElementById('errorDiv').innerHTML = "something went wrong";
+                                })
                         });
                     })
                     .then(() => {
@@ -157,9 +159,9 @@
                     .then(() => {
                         window.location.assign("/dashboard");
                     })
-                    .catch((e)=>{
+                    .catch((e) => {
                         document.getElementById('errorDiv').innerHTML = "something went wrong";
-                    })     
+                    })
             })
     </script>
 </body>
