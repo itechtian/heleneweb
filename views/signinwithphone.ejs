@@ -16,7 +16,7 @@
     <header></header>
 
     <main id="flex-center-70">
-        <div class="card">
+        <div class="card" id="enterphonenumber">
             <div class="container card-header bg-white">
                 <h4><img src="https://helene.ng/wp-content/uploads/2021/03/Helene.png" width="30px"> <i>Helene
                         Bussiness</i></h4>
@@ -34,7 +34,7 @@
             <h4><img src="https://helene.ng/wp-content/uploads/2021/03/Helene.png" width="30px"> <i>Helene
                     Bussiness</i></h4>
         </div>
-            <form class="form-group">
+            <form class="form-group p-3 py-2 px-2">
                 <h5 class="small">Enter Code here</h5>
                 <input type="text" class="form-control" id="code" required>
                 <button type="button" class="btn btn-primary btn-sm mt-3" onclick="verifycode();">verify</button>
@@ -88,7 +88,7 @@
 
         function getcode() {
             var userphonenumber = document.getElementById('number').value;
-            document.getElementById('phoneform').style.display = 'none';
+            document.getElementById('enterphonenumber').style.display = 'none';
             document.getElementById('codeform').style.display = 'block';
             firebase.auth().signInWithPhoneNumber(userphonenumber, window.recaptchaVerifier).then((comfirmationResult) => {
                 window.comfirmationResult = comfirmationResult;
