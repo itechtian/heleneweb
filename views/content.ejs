@@ -1,0 +1,90 @@
+<aside class="bg-white">
+    <div class="offcanvas offcanvas-end shadow profile" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+        id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="container offcanvas-body text-center">
+            <% if (user.picture) { %>
+
+                <img src="<%= user.picture %>" style="width: 40px;">
+                <h6 class="display-6">
+                    <%= user.name %>
+                </h6>
+                <h6 class="display-6">
+                    <%= user.email %>
+                </h6>
+                <%} else { %>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/600px-Circle-icons-profile.svg.png"
+                        width="80px">
+                    <p class="h6">
+                        <%= user.name %>
+                    </p>
+                    <p class="h6">
+                        <%= user.email %>
+                    </p>
+                    <% } %>
+                        <a href="/profile"><button type="button" class="btn btn-outline-dark btn-sm">Manage Your
+                                Account</button></a>
+                        <a href="/sessionLogout"><button type="button" class="btn btn-outline-dark btn-sm">Sign
+                                Out</button></a>
+        </div>
+
+    </div>
+</aside>
+<main id="main">
+
+    <div class="main_1">
+        <section>
+            <ul class="list-group list-group m-3">
+                <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fab fa-squarespace"></i></span>
+                    Dashboard </li><br>
+                <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fas fa-coins"></i></span> Sales
+                    Records </li><br>
+                <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fas fa-layer-group"></i></span> Stock
+                    Records </li><br>
+                <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fas fa-pen"></i></span> Debts Lists
+                </li><br>
+                <li class="list py-2 px-2 small"><span class="menu_icon"><i class="far fa-address-book"></i></span>
+                    Contacts Lists </li><br>
+            </ul>
+        </section>
+    </div>
+    <div class="main_2 bg-white">
+
+
+
+
+
+        <%- include('footer.ejs') %>
+
+    </div>
+    <div class="main_3">
+        <span class="list-group list-group">
+            <i class="fa fa-calculator" title="Calculator" style="font-size: 25px;" data-bs-toggle="offcanvas" data-bs-target="#calsoff" aria-controls="offcanvasRight"></i>
+            <br>
+            <i class="fa fas fa-wallet" title="Wallet" style="font-size: 25px;"></i>
+            <br>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Circle-icons-calendar.svg/1200px-Circle-icons-calendar.svg.png"
+                width="30px">
+            <br>
+            <img src="https://icons.veryicon.com/png/o/object/material-design-icons-1/sigma.png" width="25px">
+        </span>
+        <br>
+    </div>
+
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-5" data-bs-backdrop="false" id="calsoff" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            ...
+        </div>
+    </div>
+
+</main>
+
+<script>
+    
+</script>

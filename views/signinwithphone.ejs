@@ -18,24 +18,23 @@
     <header></header>
 
     <main id="flex-center-70">
-        <div class="card" id="enterphonenumber">
+        <div class="" id="enterphonenumber">
+            <div class="container  text-center bg-white">
+                <img src="https://helene.ng/wp-content/uploads/2021/03/Helene.png" width="50px" class="shadow">
+            </div>
+            <form class="form-group p-3 py-4 px-4">
+                <h5 class="small">Enter your Phone Number</h5>
+                <input type="text" class="form-control form-control-md" id="number" placeholder="+234xxxxxxxx" required>
+                <button type="button" class="btn btn-primary btn-sm mt-3" onclick="getcode();">Get Code</button>
+            </form>
+            <div class="container" id="recaptcha-container"></div>
+        </div>
+
+        <div class="card" id="codeform">
             <div class="container card-header bg-white">
                 <h4><img src="https://helene.ng/wp-content/uploads/2021/03/Helene.png" width="30px"> <i>Helene
                         Bussiness</i></h4>
             </div>
-            <form class="form-group p-3 py-2 px-2">
-                <h5 class="small">Enter your Phone Number</h5>
-                <input type="text" class="form-control" id="number" placeholder="+234xxxxxxxx" required>
-                <button type="button" class="btn btn-primary btn-sm mt-3" onclick="getcode();">Get Code</button>
-            </form>
-            <div id="recaptcha-container"></div>
-        </div>
-
-      <div class="card"  id="codeform">
-        <div class="container card-header bg-white">
-            <h4><img src="https://helene.ng/wp-content/uploads/2021/03/Helene.png" width="30px"> <i>Helene
-                    Bussiness</i></h4>
-        </div>
             <form class="form-group p-3 py-2 px-2">
                 <h5 class="small">Enter Code here</h5>
                 <input type="text" class="form-control" id="code" required>
@@ -48,7 +47,7 @@
     <footer class="bottom text-center py-2">
         <p class="text-dark p-3 m-3 small">Powered By Helene Solutions &copy; <span id="year"></span></p>
     </footer>
-        <!-- <button type="button" class="btn btn-sm" id="signinWithGooglebtn">Sign in with Google</button> -->
+    <!-- <button type="button" class="btn btn-sm" id="signinWithGooglebtn">Sign in with Google</button> -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
 
@@ -63,7 +62,7 @@
     <script src="js/index.js"></script>
 
     <script>
-         // Your web app's Firebase configuration
+        // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         var firebaseConfig = {
             apiKey: "AIzaSyATUp1nFk_6iAmecTgIppNH-KCV6c2yoBE",

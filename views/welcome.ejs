@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="ress/css/materialize.min.css">
+  <link rel="stylesheet" href="ress/css/style.css">
+  <link rel="stylesheet" href="ress/css/media.css">
+  <link rel="stylesheet" href="ress/fontawe/fontawesome-free-5.15.2-web/css/all.css">
+  <title>Welcome</title>
+</head>
+
+<body>
+  <!-- ===== styling for the small device ===== -->
+  <div class="d-md-sm">
+    <div class="bg-blue">
+      <div class="white">
+        <img src="ress/img/logo.jpeg" alt="" srcset="" width="30%">
+      </div>
+      <div class="center text-col">
+        <p>Africa's #1 Business</p>
+        <p class="manage"> Management Tool</p>
+        <div class="google-play">
+          <a href="#"><img src="ress/img/play store logo.png" alt="" srcset="" class="responsive-img" width="50%"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== styling for the desktop view ======== -->
+  <div class="profile-form">
+    <div class="push-center">
+      <div class="row">
+        <div class="col s10 offset-s1">
+          <div class="row white">
+            <div class="col s12 m6 hel-img">
+            </div>
+            <div class="col s12 m6 para push-center">
+              <div class="p20 sm-center d-none">
+                <img src="https://helene.ng/wp-content/uploads/2021/03/Helene.png" width="40px">
+                <h5> <b>Helene Business </b></h5>
+                <h6 class="small"> Efficiency and Productivity is what we offer.</h6>
+                <div class="row d-none form">
+                  <form class="col s12">
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input id="first_name" type="text" class="validate ">
+                        <label for="first_name">First Name</label>
+                      </div>
+                      <div class="input-field col s6">
+                        <input id="last_name" type="text" class="validate">
+                        <label for="last_name">Last Name</label>
+                      </div>
+                      <div class="input-field col s6">
+                        <input id="email" type="email" class="validate" value="<%= user.email %>">
+                        <label for="email ">Email</label>
+                      </div>
+                      <div class="input-field col s6">
+                        <input id="phone" type="tel" class="validate" value="<%= user.number %>">
+                        <label for="phone">Phone Number</label>
+                      </div>
+                      <div class="input-field col s6">
+                        <input id="businessname" type="text" class="validate">
+                        <label for="businessname">Business Name</label>
+                      </div>
+                      <div class="input-field col s6">
+                        <input id="businessname" type="text" class="validate">
+                        <label for="businessaddress">Business Address</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <select>
+                          <option value="" disabled selected>Business Category</option>
+                          <option value="1">Option 1</option>
+                          <option value="2">Option 2</option>
+                          <option value="3">Option 3</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="">
+                      <div class="input-field col s7" style="margin: 0 !important;">
+                          <label>
+                          <input type="checkbox" class="filled-in card-panel orange lighten-2" />
+                          <span style="font-size: 12px;">Terms and Conditions</span>
+                        </label>
+                      </div>
+                      <a href="/dashboard"class="waves-effect waves-light btn " style="background-color: #14A0DD; width: 30%;"> Register
+                        <i class="fas fa-check-circle"></i></a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="ress/js/jquery.min.js"></script>
+  <script src="ress/js/materialize.min.js"></script>
+  <script src="ress/js/script.js"></script>
+</body>
+
+</html>

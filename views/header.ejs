@@ -1,0 +1,38 @@
+<header class="bg-primary text-white">
+    <section class="d-flex p-2" id="d-1">
+        <!-- <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+            <i class="fa fa-bars p-2" aria-hidden="true" style="font-size: 20px;"></i></a> -->
+        <div class="p-1">
+            <a href="/dashboard"><img src="https://helene.ng/wp-content/uploads/2021/03/Helene.png" width="40px" class="shadow"></a>
+        </div>
+        <h5 class="p-2">Helene Business</h5>
+    </section>
+    <section class="d-flex pt-2">
+        <div class="p-1">
+            <i class="fa fa-question-circle p-2" aria-hidden="true" style="font-size: 25px;" title="Support"></i>
+            <i class="fa fa-cog p-2" aria-hidden="true" style="font-size: 25px;" title="Settings"></i>
+        </div>
+        <div class="p-1" id="google-logo">
+            <% if (user.picture) { %>
+                <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                    title="<%= user.email %>">
+                    <img src="<%= user.picture %>" style="width: 40px;"></a>
+                <%} else { %>
+                    <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                        title="<%= user.email %>">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/600px-Circle-icons-profile.svg.png"
+                            width="45px"></a>
+             <% } %>
+        </div>
+    </section>
+    <div class="offcanvas offcanvas-start bg-white" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+        id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" id="btn"></button>
+        </div>
+        <div class="offcanvas-body text-center">
+          
+          
+        </div>
+    </div>
+</header>

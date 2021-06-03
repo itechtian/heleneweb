@@ -70,6 +70,9 @@ app.get('/profile', verifyuser, (req, res) => {
     res.render('profile')
 })
 
+app.get('/welcome', verifyuser, (req, res)=>{
+    res.render('welcome')
+})
 
 function verifyuser(req, res, next) {
     const sessionCookie = req.cookies.session || "";

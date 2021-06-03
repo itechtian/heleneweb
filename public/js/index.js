@@ -1,11 +1,15 @@
-let getphonenumber = document.getElementById('signinWithPhoneNumber');
-var date = new Date();
-var thisyear = date.getFullYear();
-document.getElementById("year").innerHTML = thisyear;
+window.document.addEventListener('DOMContentLoaded', () => {
 
-getphonenumber.addEventListener('click', () => {
-    location.assign('/signinwithphone')
-});
+    let getphonenumber = document.getElementById('signinWithPhoneNumber');
+    let icons = document.getElementsByClassName("fa");
+
+    var date = new Date();
+    var thisyear = date.getFullYear();
+    document.getElementById("year").innerHTML = thisyear;
 
 
+    getphonenumber.addEventListener('click', () => {
+        location.assign('/signinwithphone')
+    });
 
+})

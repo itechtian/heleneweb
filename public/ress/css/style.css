@@ -1,0 +1,98 @@
+.push-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:22px;
+
+}
+.p20{
+    padding: 20px;
+}
+
+
+.hel-img{
+    background: linear-gradient(rgba(20, 160, 219, 0.6),rgba(20, 160, 219, 0.6)), url("../img/man.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 92vh;
+}
+
+.busi-font{
+    font-size: 5px !important;
+}
+
+.form{
+    padding-top: 30px;
+}
+
+.dropdown-content li>a, .dropdown-content li>span{
+    color:black;
+}
+
+.select-dropdown li.disabled,
+.select-dropdown li.disabled>span,
+.select-dropdown li.optgroup {
+    color: gray;
+    font-size: 12px;
+}
+
+
+.select-wrapper input.select-dropdown{
+    color: gray;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]), 
+input[type=password]:not(.browser-default):focus:not([readonly]), 
+input[type=email]:not(.browser-default):focus:not([readonly]), 
+input[type=url]:not(.browser-default):focus:not([readonly]), 
+input[type=time]:not(.browser-default):focus:not([readonly]), 
+input[type=date]:not(.browser-default):focus:not([readonly]), 
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]), 
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]), 
+input[type=search]:not(.browser-default):focus:not([readonly]), 
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #14A0DD; 
+    -webkit-box-shadow: 0 1px 0 0 #14A0DD;
+    box-shadow: 0 1px 0 0 #14A0DD;
+}
+
+input:not([type]):focus:not([readonly])+label, 
+input[type=text]:not(.browser-default):focus:not([readonly])+label, 
+input[type=password]:not(.browser-default):focus:not([readonly])+label, 
+input[type=email]:not(.browser-default):focus:not([readonly])+label, 
+input[type=url]:not(.browser-default):focus:not([readonly])+label, 
+input[type=time]:not(.browser-default):focus:not([readonly])+label, 
+input[type=date]:not(.browser-default):focus:not([readonly])+label, 
+input[type=datetime]:not(.browser-default):focus:not([readonly])+label, 
+input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, 
+input[type=tel]:not(.browser-default):focus:not([readonly])+label, 
+input[type=number]:not(.browser-default):focus:not([readonly])+label, 
+input[type=search]:not(.browser-default):focus:not([readonly])+label, 
+textarea.materialize-textarea:focus:not([readonly])+label {
+    color: #14A0DD;
+}
+
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #14A0DD;
+    background-color: #14A0DD;
+    z-index: 0;
+}
+
+.select-wrapper input.select-dropdown:focus {
+    border-bottom: 1px solid #14A0DD;
+}
+
+/* hides form on view lower than screen width size 990px */
+
+@media(max-width:1020px){
+    .profile-form{
+        display: none;
+    }
+}

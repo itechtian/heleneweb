@@ -1,3 +1,8 @@
+body{
+
+    /* background-color: whitesmoke; */
+}
+
 #flex-center-max{
     display: flex;
     margin:auto 0;
@@ -23,10 +28,91 @@
 }
 
 
-.access-gateway{
+header{
+
+    /* border-bottom: solid black 2px; */
+
+}
+
+main{
     display: flex;
-    margin:auto 0;
-    justify-content: center;
-    align-items: center;
+}
+
+.main_1{
+    width: 15vw;
+}
+
+.main_2{
+    width: 85vw;
+    height: 90vh;
+    border-left:solid 1px lightgray;
+    border-right:solid 1px lightgray;
+
+
+}
+
+.main_3{
+    text-align: center;
+    padding-top: 1%;
+    margin: 1%;
+}
+
+aside{
+    width: 20%;
+}
+
+img{
+    border-radius: 360px;
+    cursor:pointer;
+}
+
+header{
+    display: flex;
+
+}
+
+#calsoff{
+    z-index: 0;
+}
+
+#d-1{
+    flex: 3;
+}
+
+.profile{
+    margin-top:4%;
+    width: 20%;
+    height: 30%;
+}
+
+.fa{
+    cursor:pointer;
+    border-radius: 360px;
+}
+
+.fa:hover{
+    background-color: rgba(238, 238, 238, 0.507);
+}
+
+
+.offcanvas-header>span{
+    margin-top:5%;
+    margin-left: 3%;
+}
+
+.list{
+    cursor: pointer;
+    list-style:none;
+    text-align: justify;
+    margin-left: 20px;
+}
+
+.list:hover{
+    background-color: teal;
+    color:white
+}
+
+.menu_icon{
+    margin-right: 15px;
 }
 
