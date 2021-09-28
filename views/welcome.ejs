@@ -5,15 +5,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="ress/css/materialize.min.css">
-  <link rel="stylesheet" href="ress/css/style.css">
-  <link rel="stylesheet" href="ress/css/media.css">
-  <link rel="stylesheet" href="ress/fontawe/fontawesome-free-5.15.2-web/css/all.css">
+  <meta name="google-signin-client_id"
+      content="367667795258-7unbip6v5ch3s1iuri7khim2jkn95752.apps.googleusercontent.com">
+  <link rel="icon" sizes="192x192" href="https://helene.ng/ress/img/cropped-Helene-2.png">
+  <meta name="theme-color" content="#1e73be">
+  <meta name="google-signin-cookiepolicy" content="single_host_origin">
+  <meta name="google-signin-scope" content="profile email">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
   <title>Welcome</title>
 </head>
 
 <body>
-  <!-- ===== styling for the small device ===== -->
+  <!-- 
   <div class="d-md-sm">
     <div class="bg-blue">
       <div class="white">
@@ -29,7 +34,7 @@
     </div>
   </div>
 
-  <!-- ======== styling for the desktop view ======== -->
+  
   <div class="profile-form">
     <div class="push-center">
       <div class="row">
@@ -66,15 +71,15 @@
                         <label for="businessname">Business Name</label>
                       </div>
                       <div class="input-field col s6">
-                        <input id="businessname" type="text" class="validate">
+                        <input id="businessaddress" type="text" class="validate">
                         <label for="businessaddress">Business Address</label>
                       </div>
                       <div class="input-field col s12">
                         <select>
                           <option value="" disabled selected>Business Category</option>
-                          <option value="1">Option 1</option>
-                          <option value="2">Option 2</option>
-                          <option value="3">Option 3</option>
+                          <option>Option 1</option>
+                          <option>Option 2</option>
+                          <option>Option 3</option>
                         </select>
                       </div>
                     </div>
@@ -95,9 +100,60 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
+</div> -->
 
+<div class="d-flex">
+  <main id="flex-center-max" class="p-3 py-3 px-3">
+      <div class="p-3 py-3 px-3" id="phoneform">
+          <div class="container" id="errorDiv"></div>
+          <div class="card shadow">
+              <div class="container text-center p-2">
+                  <img src="https://helene.ng/ress/img/cropped-Helene-2.png" width="50px" class="shadow"> 
+                  <h6 class="m-3"><b>Let's get you started</b></h6>  
+                  <hr>       
+              </div>
+              
+              <form id="signin" class="form-group p-3 py-3 px-3">
+                  <!-- <h5 class="small">Enter your Email</h5> -->
+                  <input type="text" name="login" class="form-control" placeholder="Enter your name" value="<%= user.name %>" />
+                  <br>
+                  <input type="text" name="login" class="form-control" placeholder="Enter your Business name" />
+                  <br>
+                  <input type="email" name="login" class="form-control" placeholder="Enter your Business email" value="<%= user.email %>"/>
+                  <br>
+                  <select class="form-select w-100 py-2" aria-label="select example">
+                    <option selected>Business Category</option>
+                    <option value="3">Aluminuim Supplier</option>
+                    <option value="1">Arts & Entertainment</option>
+                    <option value="1">Cosmetics</option>
+                    <option value="1">Clothing</option>
+                    <option value="2">Electronics</option>
+                    <option value="1">Fashion</option>
+                    <option value="1">Farmer</option>
+                    <option value="1">Health & Medical</option>
+                    <option value="1">Hotels & Travel</option>
+                    <option value="1">Iron & Steel</option>
+                    <option value="1">Logistics</option>
+                    <option value="1">Mechanic</option>
+                    <option value="1">Service Business</option>
+                    <option value="2">Tech</option>
+                    <option value="2">Transportation</option>
+                    <option value="2">Trader</option>
+                    <option value="2">Electronics</option>
+                    <option value="2">Restaurants</option>
+                    <option value="2">Provisions</option>
+                    <option value="2">Others</option>
+                </select>
+                  <!-- <input type="text" name="login" class="form-control" placeholder="Enter your Email" />
+                  <br>
+                  <input type="password" name="password" class="form-control" placeholder="Enter your Password" /> -->
+                  <a href="/dashboard"><button type="button" class="btn btn-dark mt-3 w-100">Proceed</button></a>
+              </form>
+          </div>
+      </div>
+  </main>
+</div>
 
 
   <script src="ress/js/jquery.min.js"></script>

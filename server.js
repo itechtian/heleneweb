@@ -74,6 +74,30 @@ app.get('/welcome', verifyuser, (req, res)=>{
     res.render('welcome')
 })
 
+app.get('/contacts', verifyuser, (req, res)=>{
+    res.render('contacts')
+} )
+
+app.get('/sales', verifyuser, (req, res)=>{
+    res.render('sales')
+} )
+
+app.get('/stocks', verifyuser, (req, res)=>{
+    res.render('stocks')
+} )
+
+app.get('/debts', verifyuser, (req, res)=>{
+    res.render('debts')
+} )
+
+app.get('/addsales', verifyuser, (req, res)=>{
+    res.render('addsales')
+})
+
+app.get('/invoice', verifyuser, (req,res)=>{
+    res.render('invoice')
+})
+
 function verifyuser(req, res, next) {
     const sessionCookie = req.cookies.session || "";
     admin
@@ -84,12 +108,12 @@ function verifyuser(req, res, next) {
             next()
         })
         .catch((error) => {
-            res.redirect("/");
+           console.log(error)
         });
 }
 
 
-app.post("/sessionLogin", (req, res) => {
+app.post("/heleneLogin", (req, res) => {
     const idToken = req.body.idToken.toString();
     // Set session expiration to 5 days.
     const expiresIn = 60 * 60 * 24 * 5 * 1000
@@ -109,7 +133,7 @@ app.post("/sessionLogin", (req, res) => {
         );
 });
 
-app.get("/sessionLogout", (req, res) => {
+app.get("/heleneLogout", (req, res) => {
     res.clearCookie("session");
     res.redirect("/");
 });
@@ -117,5 +141,3 @@ app.get("/sessionLogout", (req, res) => {
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
-
-

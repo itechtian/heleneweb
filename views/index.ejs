@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-signin-client_id"
         content="367667795258-7unbip6v5ch3s1iuri7khim2jkn95752.apps.googleusercontent.com">
-    <link rel="icon" sizes="192x192" href="https://helene.ng/wp-content/uploads/2021/03/Helene.png">
+    <link rel="icon" sizes="192x192" href="https://helene.ng/ress/img/cropped-Helene-2.png">
     <meta name="theme-color" content="#1e73be">
     <meta name="google-signin-cookiepolicy" content="single_host_origin">
     <meta name="google-signin-scope" content="profile email">
@@ -19,36 +19,33 @@
 
 <body>
     <div class="d-flex">
-        <main id="flex-center-max" class="bg-primary">
-
-        </main>
-        <main id="flex-center-70" class="p-3 py-3 px-3">
+        <main id="flex-center-max" class="p-3 py-3 px-3">
             <div class="p-3 py-3 px-3" id="phoneform">
                 <div class="container" id="errorDiv"></div>
-                <div class="">
-                    <div class="container text-center">
-                        <img src="https://helene.ng/wp-content/uploads/2021/03/Helene.png" width="50px" class="shadow">        
+                <div class="card shadow">
+                    <div class="container text-center p-2">
+                        <img src="https://helene.ng/ress/img/cropped-Helene-2.png" width="50px" class="shadow"> 
+                        <h6 class="m-3"><b>Welcome Back!</b></h6>  
+                        <hr>       
                     </div>
+                    
                     <form id="signin" class="form-group p-3 py-3 px-3">
-                        <h5 class="small">Enter your Email</h5>
-                        <input type="text" name="login" class="form-control" />
+                        <!-- <h5 class="small">Enter your Email</h5> -->
+                        <input type="text" name="login" class="form-control" placeholder="Enter your Email" />
                         <br>
-                        <h5 class="small">Enter your Password</h5>
-                        <input type="password" name="password" class="form-control" />
-                        <button type="submit" class="btn btn-outline-dark btn-sm mt-3">Login</button>
+                        <!-- <h5 class="small">Enter your Password</h5> -->
+                        <input type="password" name="password" class="form-control" placeholder="Enter your Password" />
+                        <button type="submit" class="btn btn-dark mt-3 w-100">Login</button>
                     </form>
                 </div>
                 <section class="mt-3 d-flex">
                     <button id="signinwithgoogle" class="btn btn-outline-dark  btn-sm m-1">Login with <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
-                            width="20px"></button>
-                    <button id="signinwithphone" class="btn btn-outline-dark  btn-sm m-1">Login with <img
-                            src="https://icon-library.com/images/call-icon-png/call-icon-png-6.jpg" width="20px"></button>
-                    <button id="creataccount" class="btn btn-outline-dark m-1 btn-sm">New? Create Account</button>
+                            src="https://media.wired.com/photos/5926ffe47034dc5f91bed4e8/master/pass/google-logo.jpg"
+                            width="30px"></button>
+                    <!-- <button id="signinwithphone" class="btn btn-outline-dark  btn-sm m-1">Login with <img
+                            src="https://icon-library.com/images/call-icon-png/call-icon-png-6.jpg" width="20px"></button> -->
+                    <a href="/signin"><button id="creataccount" class="btn btn-outline-dark m-1 btn-sm">New? Create Account</button></a>
                 </section>
-                <footer class="bottom mt-5 text-center py-2">
-                    <p class="text-dark p-3 m-3 small">Powered By Helene Solutions &copy; <span id="year"></span></p>
-                </footer>
             </div>
         </main>
     </div>
@@ -92,7 +89,7 @@
                     .signInWithEmailAndPassword(login, password)
                     .then(({ user }) => {
                         return user.getIdToken().then((idToken) => {
-                            return fetch("/sessionLogin", {
+                            return fetch("/heleneLogin", {
                                 method: "POST",
                                 headers: {
                                     Accept: "application/json",
@@ -102,7 +99,7 @@
                                 body: JSON.stringify({ idToken }),
                             })
                                 .catch((e) => {
-                                    document.getElementById('errorDiv').innerHTML = "something went wrong";
+                                    document.getElementById('errorDiv').innerHTML = e.message;
                                 })
                         });
                     })
@@ -110,11 +107,11 @@
                         return firebase.auth().signOut();
                     })
                     .then(() => {
-                        window.location.assign("/dashboard");
+                        window.location.assign("/welcome");
                     });
                 return false
                     .catch((e) => {
-                        document.getElementById('errorDiv').innerHTML = "something went wrong";
+                        document.getElementById('errorDiv').innerHTML = e.message;
                     })
             });
         document.getElementById('signinwithphone')
@@ -137,7 +134,7 @@
                     .signInWithPopup(provider)
                     .then(({ user }) => {
                         return user.getIdToken().then((idToken) => {
-                            return fetch("/sessionLogin", {
+                            return fetch("/heleneLogin", {
                                 method: "POST",
                                 headers: {
                                     Accept: "application/json",
@@ -147,7 +144,7 @@
                                 body: JSON.stringify({ idToken }),
                             })
                                 .catch((e) => {
-                                    document.getElementById('errorDiv').innerHTML = "something went wrong";
+                                    document.getElementById('errorDiv').innerHTML = e.message;
                                 })
                         });
                     })

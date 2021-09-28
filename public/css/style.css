@@ -1,8 +1,16 @@
 body{
 
-    /* background-color: whitesmoke; */
+    background-color:whitesmoke;
 }
 
+a{
+
+    color: white;
+}
+
+a:hover{
+    text-decoration: none;
+}
 #flex-center-max{
     display: flex;
     margin:auto 0;
@@ -39,24 +47,34 @@ main{
 }
 
 .main_1{
-    width: 15vw;
+    width: 13vw;
+    height:100vh;
 }
 
 .main_2{
-    width: 85vw;
-    height: 90vh;
-    border-left:solid 1px lightgray;
-    border-right:solid 1px lightgray;
+    width: 90vw;
+    height: 100vh;
+    /* border-left:solid 1px lightgray; */
+    /* border-right:solid 1px lightgray;  */
+}
 
+.offcanvas-body{
+    overflow-y: scroll;
+}
 
+.offcanvas-body::-webkit-scrollbar{
+    display: none;
 }
 
 .main_3{
     text-align: center;
     padding-top: 1%;
-    margin: 1%;
+    width: 100%;
 }
 
+.icons{
+    display: inline-flex;
+}
 aside{
     width: 20%;
 }
@@ -108,11 +126,120 @@ header{
 }
 
 .list:hover{
-    background-color: teal;
-    color:white
+    background-color: lightgray;
+    color:black
 }
 
 .menu_icon{
-    margin-right: 15px;
+    padding: 15px;
 }
+
+
+
+/* ################################### */
+
+/* Montserrat-fonts */
+@font-face{
+    font-family:Montserrat-Regular ;
+    src: url("../fonts/MontserratFonts/Montserrat-Regular.ttf");
+}
+@font-face{
+    font-family:Montserrat-Bold ;
+    src: url("../fonts/MontserratFonts/Montserrat-Bold.ttf");
+}
+@font-face{
+    font-family:Montserrat-Italic ;
+    src: url("../fonts/MontserratFonts/Montserrat-Italic.ttf");
+}
+@font-face{
+    font-family:Montserrat-Light ;
+    src: url("../fonts/MontserratFonts/Montserrat-Light.ttf");
+}
+@font-face{
+    font-family:Montserrat-BoldItalic ;
+    src: url("../fonts/MontserratFonts/Montserrat-BoldItalic.ttf");
+}
+
+
+
+
+
+/* second-section */
+section#invent-form{
+    font-family: Montserrat-Bold;
+
+}
+
+section#invent-form .invent{
+ padding: 10px;
+ margin: 10px;
+}
+
+
+section#invent-form .invent  input{
+    /* min-width: 300px !important; */
+    outline-color: #bbbbbb;
+    border:1px solid  #bbbbbb;
+    color:    #0a043c;;
+    font-family: Montserrat-BoldItalic;
+}
+
+section#invent-form .invent input ::placeholder{
+    color: #0000;
+}
+
+section#invent-form .invent > div{
+    margin-bottom: 20px;
+}
+
+.d-flexforforms{
+    display: flex;
+    justify-content: space-around;
+} 
+.d-flex-between{
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-center{
+    text-align: center;
+}
+
+/* button{
+    padding: 10px 30px;
+    background-color:#0a043c;
+    border: none;
+    color: #bbbbbb;
+    font-weight: bolder;
+} */
+
+/* third-section table */
+section#invent-table .table{
+    display: flex;
+    justify-content: center;
+    color: black;
+    flex-direction: column; 
+}
+
+
+.clear, .print{
+    padding: 10px 20px;
+    font-size: 11px;
+    cursor: pointer;
+    color: black;
+}
+
+.clear:hover{
+    background-color: red;
+}
+
+.print{
+    background-color: #bbbbbb;
+    color: #0a043c;
+    cursor: pointer;
+}
+.font-weight-bold{
+    font-weight: 900;
+}
+
 

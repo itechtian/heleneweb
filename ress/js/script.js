@@ -1,20 +1,3 @@
-window.document.addEventListener('DOMContentLoaded', () => {
-
-    let getphonenumber = document.getElementById('signinWithPhoneNumber');
-    let icons = document.getElementsByClassName("fa");
-
-    var date = new Date();
-    var thisyear = date.getFullYear();
-    document.getElementById("year").innerHTML = thisyear;
-
-
-    getphonenumber.addEventListener('click', () => {
-        location.assign('/signinwithphone')
-    });
-
-})
-
-//##########################################
 
 getTotal = () => {
     let price = document.querySelector('#price').value;
@@ -32,14 +15,18 @@ addInventory = () =>{
     if(totalinventory == null){
         totalinventory = []
     }
-    document.addEventListener("submit", (e)=>{
-        e.preventDefault();
-
-        let product = document.querySelector('#product').value;
-        let price = document.querySelector('#price').value;
-        let quantity = document.querySelector('#quantity').value;
     
-      
+    let product = document.querySelector('#product').value;
+    let price = document.querySelector('#price').value;
+    let quantity = document.querySelector('#quantity').value;
+
+    if (product == "" || product == null) {
+        alert("please enter a product")
+    }else if (price == "" || isNaN(price)) {
+        alert("enter a valid number")
+    }else if (quantity == "" || isNaN(quantity)) {
+        alert("enter a valid quantity")
+    }else{
         let total = parseFloat( price * quantity);
         total = total.toFixed(2);     
         let newInventory = {
@@ -51,9 +38,7 @@ addInventory = () =>{
         totalinventory.push(newInventory)
         localStorage.setItem("totalinventory", JSON.stringify(totalinventory))
         window.location.reload() 
-        
-    })
-
+    }
 }
 
 getGrandTotal = () =>{
@@ -101,7 +86,7 @@ showInvent = () =>{
 
             let btn = document.createElement('input');
             btn.type = "button";
-            btn.className = "btn btn-outline-dark btn-sm clear";
+            btn.className = "btn";
             btn.value = "delete";
             btn.onclick = (function(index) {
                 return function() {
@@ -112,6 +97,7 @@ showInvent = () =>{
 
                         totalinventory.splice(index, 1) 
                         alert("item deleted")
+                        window.location.reload();
                         localStorage.setItem("totalinventory", JSON.stringify(totalinventory)); 
                         getGrandTotal();
                     }

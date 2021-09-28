@@ -8,83 +8,260 @@
             <% if (user.picture) { %>
 
                 <img src="<%= user.picture %>" style="width: 40px;">
-                <h6 class="display-6">
+                <h6 class="">
                     <%= user.name %>
                 </h6>
-                <h6 class="display-6">
+                <h6 class="">
                     <%= user.email %>
                 </h6>
                 <%} else { %>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/600px-Circle-icons-profile.svg.png"
                         width="80px">
-                    <p class="h6">
+                    <p class="">
                         <%= user.name %>
                     </p>
-                    <p class="h6">
+                    <p class="">
                         <%= user.email %>
                     </p>
                     <% } %>
                         <a href="/profile"><button type="button" class="btn btn-outline-dark btn-sm">Manage Your
                                 Account</button></a>
-                        <a href="/sessionLogout"><button type="button" class="btn btn-outline-dark btn-sm">Sign
+                        <a href="/heleneLogout"><button type="button" class="btn btn-outline-dark btn-sm">Sign
                                 Out</button></a>
         </div>
 
     </div>
 </aside>
 <main id="main">
+    <div class="main_1 bg-primary text-center">
 
-    <div class="main_1">
+        <a href="/dashboard"><img src="https://helene.ng/ress/img/cropped-Helene-2.png" width="40px"
+                class="shadow m-2"></a>
+        <h6 class="p-3 text-center text-white">Helene Business</h6>
+
+        <hr class="text-white">
         <section>
             <ul class="list-group list-group m-3">
-                <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fab fa-squarespace"></i></span>
-                    Dashboard </li><br>
-                <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fas fa-coins"></i></span> Sales
-                    Records </li><br>
-                <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fas fa-layer-group"></i></span> Stock
-                    Records </li><br>
-                <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fas fa-pen"></i></span> Debts Lists
-                </li><br>
-                <li class="list py-2 px-2 small"><span class="menu_icon"><i class="far fa-address-book"></i></span>
-                    Contacts Lists </li><br>
+                <a href="dashboard">
+                    <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fab fa-squarespace"></i></span>
+                        Dashboard </li>
+                </a><br>
+                <a href="sales">
+                    <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fas fa-coins"></i></span> Sales
+                    </li>
+                </a><br>
+                <a href="stocks">
+                    <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fas fa-layer-group"></i></span>
+                        Stock
+                    </li>
+                </a><br>
+                <a href="debts">
+                    <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fas fa-pen"></i></span> Debts
+
+                    </li>
+                </a><br>
+                <a href="contacts">
+                    <li class="list py-2 px-2 small"><span class="menu_icon"><i class="far fa-address-book"></i></span>
+                        Contacts </li>
+                </a><br>
+                <a href="invoice">
+                    <li class="list py-2 px-2 small"><span class="menu_icon"><i class="fas fa-receipt"></i></span>
+                        Inovice </li>
+                </a>
             </ul>
         </section>
     </div>
+
     <div class="main_2 bg-white">
-
-
-
-
-
-        <%- include('footer.ejs') %>
-
-    </div>
-    <div class="main_3">
-        <span class="list-group list-group">
-            <i class="fa fa-calculator" title="Calculator" style="font-size: 25px;" data-bs-toggle="offcanvas" data-bs-target="#calsoff" aria-controls="offcanvasRight"></i>
-            <br>
-            <i class="fa fas fa-wallet" title="Wallet" style="font-size: 25px;"></i>
-            <br>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Circle-icons-calendar.svg/1200px-Circle-icons-calendar.svg.png"
-                width="30px">
-            <br>
-            <img src="https://icons.veryicon.com/png/o/object/material-design-icons-1/sigma.png" width="25px">
-        </span>
-        <br>
-    </div>
-
-    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-5" data-bs-backdrop="false" id="calsoff" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <h5 id="offcanvasRightLabel">Offcanvas right</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <div class="py-3 px-3">
+            <div class="main_3 p-1">
+                <h1 class="small">Business Name Here</span></h1>
+                <br>
+                <!-- <span class="icons">
+                    <i class="fa fa-calculator shadow pt-3 ml-2 bg-white" title="Calculator"
+                        style="font-size: 18px; flex:3; width:50px; height: 50px;" data-bs-toggle="offcanvas"
+                        data-bs-target="#calsoff" aria-controls="offcanvasRight"></i>
+                    <br>
+                    <i class="fa fa-wallet pt-3 shadow ml-2 bg-white " title="Wallet"
+                        style="font-size: 18px; width:50px; height: 50px;" data-bs-toggle="offcanvas"
+                        data-bs-target="#waloff" aria-controls="offcanvasRight"></i>
+                    <br>
+                    <a href="/addsales"><i class="fa fas fa-coins pt-3 shadow ml-2  bg-white" title="record sales"
+                        style="font-size: 18px; width:50px; height: 50px; color: black;" ></i></a>
+                    <br>
+                    <i class="fa fas fa-layer-group shadow pt-3 ml-2 bg-white " title="record stock"
+                        style="font-size: 18px; width:50px; height: 50px;" data-bs-toggle="offcanvas"
+                        data-bs-target="#stockoff" aria-controls="offcanvasRight"></i>
+                    <br>
+                    <i class="fa fas fa-pen pt-3 ml-2 shadow bg-white" title="record debt"
+                        style="font-size: 18px; width:50px; height: 50px;" data-bs-toggle="offcanvas"
+                        data-bs-target="#debtsoff" aria-controls="offcanvasRight"></i>
+                    <br>
+                    <i class="fa far fa-address-book pt-3 shadow ml-2 bg-white " title="record contacts"
+                        style="font-size: 18px; width:50px; height: 50px;" data-bs-toggle="offcanvas"
+                        data-bs-target="#contactsoff" aria-controls="offcanvasRight"></i>
+                    <br>
+                    <i class="fa fas fa-receipt pt-3 shadow ml-2 bg-white " title="record contacts"
+                    style="font-size: 18px; width:50px; height: 50px;" data-bs-toggle="offcanvas"
+                    data-bs-target="#contactsoff" aria-controls="offcanvasRight"></i>
+                </span>
+                <br> -->
+            </div>
+            <div class="row align-items-center" style="">
+                <div class="col col-sm-4">
+                    <div class="card shadow border border-primary">
+                        <h5 class="text-center px-3 py-3 p-3">Today's sales</h5>
+                        <h5 class="px-3 py-3 p-3 small">
+                            <b>NGN</b> - 0.00<br><br>
+                            <b>Expenses</b> - NGN 0.00<br><br>
+                            <b>Items sold</b> - 0<br><br>
+                            <b>Overall Debts</b> - NGN 0.00<br>
+                        </h5>
+                        <!-- <h5 class="px-3 py-3 p-3 small"></h5>
+                        <h5 class="px-3 py-3 p-3 small"></h5>
+                        <h5 class="px-3 py-3 p-3 small"><b></h5> -->
+                    </div>
+                </div>
+                <div class="col col-sm-4">
+                    <div class="card shadow border border-primary">
+                        <h5 class="text-center px-3 py-3 p-3">Yesterday's sales</h5>
+                        <h5 class="px-3 py-3 p-3 small">
+                            <b>NGN</b> - 0.00<br><br>
+                            <b>Expenses</b> - NGN 0.00<br><br>
+                            <b>Items sold</b> - 0<br><br>
+                            <b>Overall Debts</b> - NGN 0.00<br>
+                        </h5>
+                    </div>
+                </div>
+                <div class="col col-sm-4">
+                    <div class="card shadow border border-primary">
+                        <h5 class="text-center px-3 py-3 p-3">Monthly sales</h5>
+                        <h5 class="px-3 py-3 p-3 small">
+                            <b>NGN</b> - 0.00<br><br>
+                            <b>Expenses</b> - NGN 0.00<br><br>
+                            <b>Items sold</b> - 0<br><br>
+                            <b>Overall Debts</b> - NGN 0.00<br>
+                        </h5>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="offcanvas-body">
-            ...
-        </div>
+
     </div>
+    <!-- <div class="main_3content bg-primary text-white p-2 m-1 py-2 px-2">
+            <div class="" id="google-logo">
+                <% if (user.picture) { %>
+                    <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                        title="<%= user.email %>">
+                        <img src="<%= user.picture %>" style="width: 40px;"></a>
+                    <%} else { %>
+                        <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                            title="<%= user.email %>">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/600px-Circle-icons-profile.svg.png"
+                                width="45px"></a>
+                 <% } %>
+            </div>
+            
+            <section class="">
+                <div class="">
+                    <i class="fa fa-question-circle p-2" aria-hidden="true" style="font-size: 25px;" title="Support"></i>
+                    <i class="fa fa-cog p-2" aria-hidden="true" style="font-size: 25px;" title="Settings"></i>
+                </div>
+               
+            </section>
+            <div class="offcanvas offcanvas-start bg-white" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" id="btn"></button>
+                </div>
+                <div class="offcanvas-body text-center">
+                  
+                  
+                </div>
+            </div>
+
+    </div> -->
 
 </main>
+<!-- Button trigger modal -->
 
-<script>
-    
-</script>
+<button type="button" class="bg-white shadow text-dark btn btn-sm btn-secondary rounded-pill"
+    style="width: 4rem; height:4rem; left: 92%; top: 85%; position: absolute;">+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">My Invoice</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> -->
+            <div class="modal-body">
+                <div class="container">
+                </div>
+                <div class="card text-center">
+                    <div class="d-flex">
+                        <img src="https://helene.ng/ress/img/cropped-Helene-2.png" class="m-2 p-2" width="80px">
+                        <span class="text-left mt-3">
+                            <h5>Pascal Code Academy</h5>
+                            <h5 class="small">Address: 10004 Shasha </h5>
+                            <h5 class="small">Thu, 6 May 2021</h5>
+                        </span>
+                    </div>
+                </div>
+                <div class="card p-3 mt-2">
+                    <h6>Billed To:</h6>
+                    <h5 class="small" id="customername"></h5>
+                    <h5 class="small" id="customerphonenumber"></h5>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">S/N</th>
+                            <th scope="col">Items</th>
+                            <th scope="col">Items Name</th>
+
+                            <th scope="col">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+
+                            <td><span id="itemquantity"></span></td>
+                            <td><span id="itemname"></span></td>
+                            <td> <span id="unitprice"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-right">
+                    <h6>Total: <span id="unitpricet"></span></h6>
+                </div>
+            </div>
+            <div class="container p-3">
+
+                <svg id="barcode"></svg>
+            </div>
+            <script>
+                JsBarcode("#barcode", "Powered by Helene");
+            </script>
+        </div>
+        <script>
+            const customername = localStorage.getItem("customername")
+            const customerphonenumber = localStorage.getItem("customerphonenumber")
+            const itemquantity = localStorage.getItem("itemquantity")
+            const unitprice = localStorage.getItem("unitprice")
+            const itemname = localStorage.getItem("itemname")
+
+
+            document.getElementById("customername").innerHTML = customername;
+            document.getElementById("customerphonenumber").innerHTML = customerphonenumber;
+            document.getElementById("unitpricet").innerHTML = unitprice;
+            document.getElementById("unitprice").innerHTML = unitprice;
+            document.getElementById("itemquantity").innerHTML = itemquantity;
+            document.getElementById("itemname").innerHTML = itemname;
+
+        </script>
+    </div>
+</div>
+</div>
